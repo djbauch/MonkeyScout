@@ -1,0 +1,17 @@
+<ion-view view-title="Autonomous"  id="autonomous-view">
+  <!--  <ion-content class="has-header" overflow-scroll="true" padding="true"> -->
+        <form  class="list">
+            <ion-toggle  name="reachDefense" toggle-class="toggle-positive">Reach Defense</ion-toggle>
+            <ion-toggle style="" name="crossDefense" toggle-class="toggle-royal">Cross Defense</ion-toggle>
+            <ion-item  class="range range-positive">High Goal
+                <input name="highGoal" max="100" min="0" value="50" type="range">
+            </ion-item>
+            <ion-item style="" class="range range-positive">Low Goal
+                <input name="lowGoal" max="100" min="0" value="50" type="range">
+            </ion-item>
+            <label  name="startPosition" class="item item-input">
+                <span class="input-label">Starting Position</span><textarea placeholder="Start Position"> </textarea>
+            </label>
+        </form>
+ <!--   </ion-content> -->
+</ion-view>
