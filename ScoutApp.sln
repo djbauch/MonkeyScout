@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Meteor Project", "Meteor Project", "{53B5E828-1053-4A5E-99EC-F2DB7CEEE4B5}"
+	ProjectSection(SolutionItems) = preProject
+		Index.html = Index.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "client", "client", "{FC2C60DC-D27A-42ED-859C-485CE38B83FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{15F7652A-588E-4776-9EC4-5D082FFFD055}"
+	ProjectSection(SolutionItems) = preProject
+		client\scripts\controllers.js = client\scripts\controllers.js
+		client\scripts\directives.js = client\scripts\directives.js
+		client\scripts\routes.js = client\scripts\routes.js
+		client\scripts\services.js = client\scripts\services.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{B821CE8A-0E6A-488A-97B3-1C7DE855B80A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{7B1522FD-939C-4A80-A43D-12F3D3A66A93}"
+	ProjectSection(SolutionItems) = preProject
+		client\scripts\lib\Scout.js = client\scripts\lib\Scout.js
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FC2C60DC-D27A-42ED-859C-485CE38B83FB} = {53B5E828-1053-4A5E-99EC-F2DB7CEEE4B5}
+		{15F7652A-588E-4776-9EC4-5D082FFFD055} = {FC2C60DC-D27A-42ED-859C-485CE38B83FB}
+		{B821CE8A-0E6A-488A-97B3-1C7DE855B80A} = {FC2C60DC-D27A-42ED-859C-485CE38B83FB}
+		{7B1522FD-939C-4A80-A43D-12F3D3A66A93} = {15F7652A-588E-4776-9EC4-5D082FFFD055}
+	EndGlobalSection
+EndGlobal
