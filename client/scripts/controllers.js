@@ -1,7 +1,11 @@
 angular.module('Scout.controllers', [])
   
 .controller('setupCtrl', function($scope) {
+    $scope.teams = Teams.find({});
 
+    $scope.addTeam = function() {
+        Teams.insert({ number: teamNumber, name: teamName });
+    }
 })
    
 .controller('autonomousCtrl', function($scope) {
