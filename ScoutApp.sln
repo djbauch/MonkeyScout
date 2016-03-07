@@ -19,6 +19,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{15F7
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{B821CE8A-0E6A-488A-97B3-1C7DE855B80A}"
+	ProjectSection(SolutionItems) = preProject
+		client\templates\autonomous.html = client\templates\autonomous.html
+		client\templates\chats.html = client\templates\chats.html
+		client\templates\cloud.html = client\templates\cloud.html
+		client\templates\configuration.html = client\templates\configuration.html
+		client\templates\login.html = client\templates\login.html
+		client\templates\match.html = client\templates\match.html
+		client\templates\pitScouting.html = client\templates\pitScouting.html
+		client\templates\setup.html = client\templates\setup.html
+		client\templates\signup.html = client\templates\signup.html
+		client\templates\tab7DefaultPage.html = client\templates\tab7DefaultPage.html
+		client\templates\tabs.html = client\templates\tabs.html
+		client\templates\teleOp.html = client\templates\teleOp.html
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{7B1522FD-939C-4A80-A43D-12F3D3A66A93}"
 	ProjectSection(SolutionItems) = preProject

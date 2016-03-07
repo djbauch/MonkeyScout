@@ -67,6 +67,9 @@ artifacts/
 *.svclog
 *.scc
 
+# Meteor configuration
+.meteor/
+
 # Chutzpah Test files
 _Chutzpah*
 

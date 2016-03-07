@@ -1,25 +1,25 @@
-<!-- <ion-view style="" title="Tabs Controller"> -->
-    <ion-tabs class="tabs-stable tabs-icon-top tabs-color-positive" ng-cloak>
+<!-- <ion-view  title="Tabs Controller"> -->
+    <ion-tabs class="tabs-icon-top tabs-positive" ng-cloak>
       
-        <ion-tab  title="Configuration" icon="ion-gear-a" href="#/tab/configure">
+        <ion-tab  title="Configuration" icon="ion-gear-a" ui-sref="tabs.configure">
             <ion-nav-view name="tab-configuration"></ion-nav-view>
         </ion-tab>
-        <ion-tab style="" title="Pit" icon="ion-wrench" href="#/tab/pit">
+        <ion-tab  title="Pit" icon="ion-wrench" ui-sref="tabs.pit">
             <ion-nav-view name="tab-pit"></ion-nav-view>
         </ion-tab>
-        <ion-tab style="" title="Setup" icon="ion-edit" href="#/tab/setup">
+        <ion-tab  title="Setup" icon="ion-edit" ui-sref="tabs.setup">
             <ion-nav-view name="tab-setup"></ion-nav-view>
         </ion-tab>
-        <ion-tab style="" title="Match" icon="ion-flame" href="#/tab/page6">
+        <ion-tab  title="Match" icon="ion-flame" href="#/page6">
             <ion-nav-view name="tab-match"></ion-nav-view>
         </ion-tab>
-        <ion-tab style="" title="Autonomous" icon="ion-social-android" href="#/tab/autonomousPeriod">
+        <ion-tab  title="Autonomous" icon="ion-social-android" ui-sref="tabs.autonomous">
             <ion-nav-view name="tab-autonomous"></ion-nav-view>
         </ion-tab>
-        <ion-tab style="" title="Teleop" icon="ion-man" href="#/tab/teleopPeriod">
+        <ion-tab  title="Teleop" icon="ion-man" ui-sref="tabs.teleop">
             <ion-nav-view name="tab-teleop"></ion-nav-view>
         </ion-tab>
-        <ion-tab style="" title="Cloud" icon="ion-ios-cloud" href="#/tab/cloud">
+        <ion-tab  title="Cloud" icon="ion-ios-cloud" ui-sref="tabs.cloud">
             <ion-nav-view name="tab-cloud"></ion-nav-view>
         </ion-tab>
     </ion-tabs>
