@@ -65,15 +65,22 @@ angular.module('Scout.routes', [])
 
   .state('tabs.match', {
       url: '/match',
-      templateUrl: 'client/templates/match.html',
-      controller: 'matchCtrl'
+      views: {
+          'tab-match': {
+              templateUrl: 'client/templates/match.html',
+              controller: 'matchCtrl'
+          }
+      }
   })
 
   .state('tabs.pit', {
       url: '/pit',
-      templateUrl: 'client/templates/pitScouting.html',
-      controller: 'pitScoutingCtrl'
-
+      views: {
+          'tab-pit': {
+              templateUrl: 'client/templates/pitScouting.html',
+              controller: 'pitScoutingCtrl'
+          }
+      }
   })
 
   .state('tab7DefaultPage', {
@@ -84,8 +91,12 @@ angular.module('Scout.routes', [])
 
   .state('tabs.configure', {
       url: '/configure',
-      templateUrl: 'client/templates/configuration.html',
-      controller: 'configurationCtrl'
+      views: {
+          'tab-configure': {
+              templateUrl: 'client/templates/configuration.html',
+              controller: 'configurationCtrl'
+          }
+      }
   })
 
   .state('login', {
