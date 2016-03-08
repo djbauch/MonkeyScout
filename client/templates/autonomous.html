@@ -12,8 +12,25 @@
                 <input name="lowGoal" max="100" min="0" value="50" type="range">
             </ion-item>
             <label name="startPosition" class="item item-input">
-                <span class="input-label">Starting Position</span><textarea placeholder="Start Position"> </textarea>
+                <span class="input-label">Starting Position</span><textarea placeholder="Start Position">{{startPos}}</textarea>
             </label>
         </form>
+        <div align="center">
+            <img src="HalfCourt.png" width="360" height="360" alt="Court" usemap="#courtMap" />
+            <map name="courtMap">
+                <area shape="rect" coords="0,0,119,119" ng-click="clickAt('Back Right');"/>
+                <area shape="rect" coords="120,0,239,119" ng-click="clickAt('Back Center');" />
+                <area shape="rect" coords="240,0,359,119" ng-click="clickAt('Back Left');" />
+
+                <area shape="rect" coords="0,120,119,239" ng-click="clickAt('Middle Right');" />
+                <area shape="rect" coords="120,120,239,239" ng-click="clickAt('Middle Center');" />
+                <area shape="rect" coords="240,120,359,239" ng-click="clickAt('Middle Left');" />
+
+                <area shape="rect" coords="0,240,119,359" ng-click="clickAt('Front Right');" />
+                <area shape="rect" coords="120,240,239,359" ng-click="clickAt('Front Center');" />
+                <area shape="rect" coords="240,240,359,359" ng-click="clickAt('Front Left');" />
+
+           </map>
+        </div>
     </ion-content>
 </ion-view>

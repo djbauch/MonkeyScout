@@ -25,7 +25,8 @@ if (Meteor.isClient) {
 				}
 			});
 		
-	});
+		});
+	console.log('Module setup complete');
 }
 //	if (Meteor.isCordova) {
 //		angular.element(document).on('deviceready', onReady);

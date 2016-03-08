@@ -8,7 +8,12 @@ angular.module('Scout.controllers', [])
     }
 })
    
-.controller('autonomousCtrl', function($scope) {
+.controller('autonomousCtrl', function ($scope) {
+    console.log("Autonomous");
+    $scope.clickAt = function (loc) {
+        $scope.startPos = loc;
+        console.log(loc);
+    }
 
 })
    
@@ -16,8 +21,21 @@ angular.module('Scout.controllers', [])
 
 })
       
-.controller('teleOpCtrl', function($scope) {
+.controller('teleOpCtrl', function ($scope) {
+    $scope.numAttempts = 0;
+    $scope.numScores = 0;
 
+    $scope.attempt = function () {
+        console.log("Attempt " + $scope.numAttempts)
+        $scope.numAttempts++;
+    }
+    $scope.score = function () {
+        $scope.numScores++;
+    }
+    $scope.resetScore = function () {
+        $scope.numAttempts = 0;
+        $scope.numScores = 0;
+    }
 })
    
 .controller('matchCtrl', function($scope) {
