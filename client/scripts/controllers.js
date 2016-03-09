@@ -1,14 +1,22 @@
 angular.module('Scout.controllers', [])
   
-.controller('setupCtrl', function($scope) {
-    $scope.teams = Teams.find({});
+.controller('configurationCtrl', function ($scope, $reactive) {
+    $reactive(this).attach($scope);
 
-    $scope.addTeam = function() {
+    this.teams = Teams.find({});
+})
+
+.controller('setupCtrl', function ($scope, $reactive) {
+    $reactive(this).attach($scope);
+
+    this.teams = Teams.find({});
+
+    this.addTeam = function() {
         Teams.insert({ number: teamNumber, name: teamName });
     }
 })
    
-.controller('autonomousCtrl', function ($scope) {
+.controller('autonomousCtrl', function ($scope, $reactive) {
     console.log("Autonomous");
     $scope.clickAt = function (loc) {
         $scope.startPos = loc;
@@ -21,20 +29,21 @@ angular.module('Scout.controllers', [])
 
 })
       
-.controller('teleOpCtrl', function ($scope) {
-    $scope.numAttempts = 0;
-    $scope.numScores = 0;
+.controller('teleOpCtrl', function ($scope, $reactive) {
+    $reactive(this).attach($scope);
+    this.numAttempts = 0;
+    this.numScores = 0;
 
-    $scope.attempt = function () {
-        console.log("Attempt " + $scope.numAttempts)
-        $scope.numAttempts++;
+    this.attempt = function () {
+        console.log("Attempt " + this.numAttempts)
+        this.numAttempts++;
     }
-    $scope.score = function () {
-        $scope.numScores++;
+    this.score = function () {
+        this.numScores++;
     }
-    $scope.resetScore = function () {
-        $scope.numAttempts = 0;
-        $scope.numScores = 0;
+    this.resetScore = function () {
+        this.numAttempts = 0;
+        this.numScores = 0;
     }
 })
    
@@ -42,8 +51,24 @@ angular.module('Scout.controllers', [])
 
 })
    
-.controller('pitScoutingCtrl', function($scope) {
-
+.controller('pitScoutingCtrl', function($scope, $reactive) {
+    $reactive(this).attach($scope);
+    
+    this.teams = Teams.find({});
+    debugger;
+    console.log('Got ' + this.teams + ' teams')
+    /* this.teams = [
+        {
+            _id: 0,
+            number: 457,
+            name: 'Grease Monkeys'
+        },
+        {
+            _id: 1,
+            number: 1477,
+            name: 'Texas Torque'
+        }
+    ]; */
 })
    
 .controller('tab7DefaultPageCtrl', function($scope) {

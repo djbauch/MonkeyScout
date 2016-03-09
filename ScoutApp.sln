@@ -39,17 +39,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{7B1522FD-939
 		client\scripts\lib\Scout.js = client\scripts\lib\Scout.js
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "public", "public", "{EF2379AE-85B7-46A9-9CCE-229402A28981}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{F846B491-5DEF-4235-97E9-9D5597EA38B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "collections", "collections", "{F009BA08-6581-49F2-8653-281B4BD4B9A4}"
+	ProjectSection(SolutionItems) = preProject
+		Matches.js = Matches.js
+		lib\collections\Teams.js = lib\collections\Teams.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "server", "server", "{6DA9C6DC-E425-4EA0-AC3F-ADE5CAF6A837}"
+	ProjectSection(SolutionItems) = preProject
+		server\Bootstrap.js = server\Bootstrap.js
+	EndProjectSection
+EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Debug|ARM = Debug|ARM
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|Any CPU = Release|Any CPU
-		Release|ARM = Release|ARM
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
@@ -58,5 +63,9 @@ Global
 		{15F7652A-588E-4776-9EC4-5D082FFFD055} = {FC2C60DC-D27A-42ED-859C-485CE38B83FB}
 		{B821CE8A-0E6A-488A-97B3-1C7DE855B80A} = {FC2C60DC-D27A-42ED-859C-485CE38B83FB}
 		{7B1522FD-939C-4A80-A43D-12F3D3A66A93} = {15F7652A-588E-4776-9EC4-5D082FFFD055}
+		{EF2379AE-85B7-46A9-9CCE-229402A28981} = {53B5E828-1053-4A5E-99EC-F2DB7CEEE4B5}
+		{F846B491-5DEF-4235-97E9-9D5597EA38B7} = {53B5E828-1053-4A5E-99EC-F2DB7CEEE4B5}
+		{F009BA08-6581-49F2-8653-281B4BD4B9A4} = {F846B491-5DEF-4235-97E9-9D5597EA38B7}
+		{6DA9C6DC-E425-4EA0-AC3F-ADE5CAF6A837} = {53B5E828-1053-4A5E-99EC-F2DB7CEEE4B5}
 	EndGlobalSection
 EndGlobal

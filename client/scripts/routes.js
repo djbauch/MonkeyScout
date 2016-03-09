@@ -36,7 +36,7 @@ angular.module('Scout.routes', [])
       views: {
           'tab-setup': {
               templateUrl: 'client/templates/setup.html',
-              controller: 'setupCtrl'
+              controller: 'setupCtrl as setup'
           }
       }
   })
@@ -58,7 +58,7 @@ angular.module('Scout.routes', [])
       views: {
           'tab-teleop': {
               templateUrl: 'client/templates/teleOp.html',
-              controller: 'teleOpCtrl'
+              controller: 'teleOpCtrl as teleOp'
           }
       }
   })
@@ -78,7 +78,7 @@ angular.module('Scout.routes', [])
       views: {
           'tab-pit': {
               templateUrl: 'client/templates/pitScouting.html',
-              controller: 'pitScoutingCtrl'
+              controller: 'pitScoutingCtrl as pitScouting'
           }
       }
   })
@@ -94,7 +94,7 @@ angular.module('Scout.routes', [])
       views: {
           'tab-configure': {
               templateUrl: 'client/templates/configuration.html',
-              controller: 'configurationCtrl'
+              controller: 'configurationCtrl as configuration'
           }
       }
   })

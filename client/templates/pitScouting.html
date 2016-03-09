@@ -3,7 +3,8 @@
         <form style="" class="list">
             <label style="" name="pitTeam" class="item item-select">
                 <span class="input-label">Team</span>
-                <select></select>
+                <select ng-model="pitScouting.selectedTeam"
+                        ng-options="x.number for x in pitScouting.teams"></select>
             </label>
             <label style="" class="item item-select">
                 <span class="input-label">Wheels</span>
