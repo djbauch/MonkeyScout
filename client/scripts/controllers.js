@@ -7,41 +7,103 @@ angular.module('Scout.controllers', [])
   this.helpers({
     teams() {
       return Teams.find({});
-    }
-    //  thing() { return "Magical"}
+    },
+    thing() { return "Magical"; },
   });
 
-  this.teamNumber = 0;
-  this.teamName = 0;
   this.addTeam = function () {
-    console.log('Add team');
+    console.log('Add team!');
+    Teams.insert({ number: this.teamNumber, name: this.teamName });
   }
+
+  this.clickOnTeam = function (num) {
+    console.log('Clicked on ' + num);
+    let record = Teams.findOne({ number: num });
+    if (record) {
+      Teams.remove({ _id: record._id });
+    }
+  }
+  this.teamNumber = 0;
+  this.teamName = "";
+
 })
 
-.controller('setupCtrl', function ($scope, $reactive) {
+.controller('SetupCtrl', function ($scope, $reactive) {
   $reactive(this).attach($scope);
 
-  this.teams = Teams.find({});
+  this.helpers({
+    teams() {
+      return Teams.find({});
+    },
+    matches() {
+      return Matches.find({});
+    }
+  });
 
-  this.addTeam = function () {
-    Teams.insert({ number: teamNumber, name: teamName });
+  this.addMatch = function () {
+ //   Matches.insert({
+ //     number: +this.matchNumber,
+ //     red: [+this.red1, +this.red2, +this.red3],
+ //     blue: [+this.blue1, +this.blue2, +this.blue3]
+//    });
   }
+ 
+  this.clickOnMatch = function (num) {
+    let record = Matches.findOne({ number: num });
+    if (record) {
+      Matches.remove({ _id: record._id }); 
+    }
+  }
+  this.matchNumber = 0;
 })
 
-.controller('autonomousCtrl', function ($scope, $reactive) {
-  console.log("Autonomous");
-  $scope.clickAt = function (loc) {
-    $scope.startPos = loc;
+.controller('AutonomousCtrl', function ($scope, $reactive) {
+  $reactive(this).attach($scope);
+
+  this.helpers({
+    autonomousScoutingInfo() {
+      return AutonomousScoutingInfo.find({ match: +this.mathchNum, team: +this.teamNum });
+    },
+    teams() {
+      return Teams.find({});
+    }
+  });
+
+  this.clickAt = function (loc) {
+    this.startPos = loc;
     console.log(loc);
   }
 
+  this.publish = function () {
+    debugger;
+    let record = AutonomousScoutingInfo.findOne({ match: +this.matchNum, team: +this.teamNum });
+    if (record) {
+      AutonomousScoutingInfo.remove({ _id: record._id });
+    } 
+    AutonomousScoutingInfo.insert({
+      match: +this.matchNum, team: +this.teamNum,
+      reachDefense: this.reachDefense || false,
+      crossDefense: this.crossDefense || false,
+      highGoal: +this.highGoal,
+      lowGoal: +this.lowGoal,
+      startPos: this.startPos
+    });
+    
+  }
+  this.matchNum = 0;
+  this.teamNum = 0;
+  this.startPos = 'Unspecified';
+  this.reachDefense = false;
+  this.crossDefense = false;
+  this.highGoal = 0;
+  this.lowGoal = 0;
 })
 
-.controller('cloudCtrl', function ($scope) {
+.controller('CloudCtrl', function ($scope) {
 
 })
 
-.controller('teleOpCtrl', function ($scope, $reactive) {
+.controller('TeleOpCtrl', function ($scope, $reactive) {
   $reactive(this).attach($scope);
   this.numAttempts = 0;
   this.numScores = 0;
@@ -59,11 +121,11 @@ angular.module('Scout.controllers', [])
   }
 })
 
-.controller('matchCtrl', function ($scope) {
+.controller('MatchCtrl', function ($scope) {
 
 })
 
-.controller('pitScoutingCtrl', function ($scope, $reactive) {
+.controller('PitScoutingCtrl', function ($scope, $reactive) {
   $reactive(this).attach($scope);
 
   this.teams = Teams.find({});

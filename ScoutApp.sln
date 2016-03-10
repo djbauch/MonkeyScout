@@ -45,7 +45,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{F846B491-5DE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "collections", "collections", "{F009BA08-6581-49F2-8653-281B4BD4B9A4}"
 	ProjectSection(SolutionItems) = preProject
-		Matches.js = Matches.js
+		lib\collections\Matches.js = lib\collections\Matches.js
 		lib\collections\Teams.js = lib\collections\Teams.js
 	EndProjectSection
 EndProject

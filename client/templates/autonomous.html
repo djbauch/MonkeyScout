@@ -1,36 +1,41 @@
 <ion-view view-title="Autonomous" id="autonomous-view">
-    <ion-content class="has-header" overflow-scroll="true" padding="true">
-        <form class="list">
-            <ion-toggle name="reachDefense" toggle-class="toggle-positive">Reach Defense</ion-toggle>
-            <ion-toggle style="" name="crossDefense" toggle-class="toggle-royal">Cross Defense</ion-toggle>
+   <ion-content class="has-header" overflow-scroll="true" padding="true">
+      <div ng-controller="AutonomousCtrl as autonomous">
+         <form class="list">
+            <ion-toggle name="reachDefense" toggle-class="toggle-positive" ng-model="autonomous.reachDefense">Reach Defense</ion-toggle>
+            <ion-toggle style="" name="crossDefense" toggle-class="toggle-royal" ng-model="autonomous.crossDefense">Cross Defense</ion-toggle>
             <ion-item class="range range-positive">
-                High Goal
-                <input name="highGoal" max="100" min="0" value="50" type="range">
+               High Goal
+               <input name="highGoal" max="100" min="0" value="0" type="range" ng-model="autonomous.highGoal">
             </ion-item>
             <ion-item style="" class="range range-positive">
-                Low Goal
-                <input name="lowGoal" max="100" min="0" value="50" type="range">
+               Low Goal
+               <input name="lowGoal" max="100" min="0" value="0" type="range" ng-model="autnomous.lowGoal">
             </ion-item>
             <label name="startPosition" class="item item-input">
-                <span class="input-label">Starting Position</span><textarea placeholder="Start Position">{{startPos}}</textarea>
+               <span class="input-label">Starting Position</span>
+               <textarea placeholder="Start Position">{{autonomous.startPos}}</textarea>
             </label>
-        </form>
-        <div align="center">
+         </form>
+         <div align="center">
             <img src="HalfCourt.png" width="360" height="360" alt="Court" usemap="#courtMap" />
             <map name="courtMap">
-                <area shape="rect" coords="0,0,119,119" ng-click="clickAt('Back Right');"/>
-                <area shape="rect" coords="120,0,239,119" ng-click="clickAt('Back Center');" />
-                <area shape="rect" coords="240,0,359,119" ng-click="clickAt('Back Left');" />
+               <area shape="rect" coords="0,0,119,119" ng-click="autonomous.clickAt('Back Right');" />
+               <area shape="rect" coords="120,0,239,119" ng-click="autonomous.clickAt('Back Center');" />
+               <area shape="rect" coords="240,0,359,119" ng-click="autonomous.clickAt('Back Left');" />
 
-                <area shape="rect" coords="0,120,119,239" ng-click="clickAt('Middle Right');" />
-                <area shape="rect" coords="120,120,239,239" ng-click="clickAt('Middle Center');" />
-                <area shape="rect" coords="240,120,359,239" ng-click="clickAt('Middle Left');" />
+               <area shape="rect" coords="0,120,119,239" ng-click="autonomous.clickAt('Middle Right');" />
+               <area shape="rect" coords="120,120,239,239" ng-click="autonomous.clickAt('Middle Center');" />
+               <area shape="rect" coords="240,120,359,239" ng-click="autonomous.clickAt('Middle Left');" />
 
-                <area shape="rect" coords="0,240,119,359" ng-click="clickAt('Front Right');" />
-                <area shape="rect" coords="120,240,239,359" ng-click="clickAt('Front Center');" />
-                <area shape="rect" coords="240,240,359,359" ng-click="clickAt('Front Left');" />
+               <area shape="rect" coords="0,240,119,359" ng-click="autonomous.clickAt('Front Right');" />
+               <area shape="rect" coords="120,240,239,359" ng-click="autonomous.clickAt('Front Center');" />
+               <area shape="rect" coords="240,240,359,359" ng-click="autonomous.clickAt('Front Left');" />
 
-           </map>
-        </div>
-    </ion-content>
+            </map>
+         </div>
+         <button style="" class="button button-energized button-block " ng-click="autonomous.publish()">Publish</button>
+
+      </div>
+   </ion-content>
 </ion-view>

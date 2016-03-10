@@ -33,7 +33,7 @@ angular.module('Scout.routes', [])
     views: {
       'tab-setup': {
         templateUrl: 'client/templates/setup.html',
-        controller: 'setupCtrl as setup'
+        controller: 'SetupCtrl as setup'
       }
     }
   })
@@ -43,7 +43,7 @@ angular.module('Scout.routes', [])
     views: {
       'tab-autonomous': {
         templateUrl: 'client/templates/autonomous.html',
-        controller: 'autonomousCtrl'
+        controller: 'AutonomousCtrl'
       }
     }
   })
@@ -52,16 +52,13 @@ angular.module('Scout.routes', [])
     url: '/chats',
     templateUrl: 'client/templates/chats.html'
   })
-
-
-
-
+    
   .state('tabs.cloud', {
     url: '/cloud',
     views: {
       'tab-cloud': {
         templateUrl: 'client/templates/cloud.html',
-        controller: 'cloudCtrl'
+        controller: 'CloudCtrl'
       }
     }
   })
@@ -72,7 +69,7 @@ angular.module('Scout.routes', [])
     views: {
       'tab-teleop': {
         templateUrl: 'client/templates/teleOp.html',
-        controller: 'teleOpCtrl as teleOp'
+        controller: 'TeleOpCtrl as teleOp'
       }
     }
   })
@@ -82,7 +79,7 @@ angular.module('Scout.routes', [])
     views: {
       'tab-match': {
         templateUrl: 'client/templates/match.html',
-        controller: 'matchCtrl'
+        controller: 'MatchCtrl'
       }
     }
   })
@@ -92,7 +89,7 @@ angular.module('Scout.routes', [])
     views: {
       'tab-pit': {
         templateUrl: 'client/templates/pitScouting.html',
-        controller: 'pitScoutingCtrl as pitScouting'
+        controller: 'PitScoutingCtrl as pitScouting'
       }
     }
   })
@@ -100,19 +97,19 @@ angular.module('Scout.routes', [])
   .state('tab7DefaultPage', {
     url: '/page8',
     templateUrl: 'client/templates/tab7DefaultPage.html',
-    controller: 'tab7DefaultPageCtrl'
+    controller: 'Tab7DefaultPageCtrl'
   })
 
   .state('login', {
     url: '/page10',
     templateUrl: 'client/templates/login.html',
-    controller: 'loginCtrl'
+    controller: 'LoginCtrl'
   })
 
   .state('signup', {
     url: '/page11',
     templateUrl: 'client/templates/signup.html',
-    controller: 'signupCtrl'
+    controller: 'SignupCtrl'
   });
 
   $urlRouterProvider.otherwise('/tabs/setup');

@@ -30,30 +30,5 @@ Meteor.startup(function () {
     });
   }
 
-  if (Matches.find().count() === 0) {
-    Matches.remove({});
-
-    let matches = [
-      {
-        number: 1,
-        red: [457, 118, 1477],
-        blue: [1, 2, 3]
-      },
-      {
-        number: 2,
-        red: [2468, 457, 234],
-        blue: [7, 8, 9]
-      },
-      {
-        number: 3,
-        red: [7, 17, 27],
-        blue: [8, 10, 12]
-      }
-    ];
-
-    matches.forEach((t) => {
-      Matches.insert(t);
-    });
-  }
 });
 
