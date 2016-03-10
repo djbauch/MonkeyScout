@@ -1,21 +1,39 @@
 <ion-view style="" id="cloud-view" view-title="Cloud">
-    <ion-content class="has-header" overflow-scroll="true" padding="true">
-        <h3 style="">Match Summary</h3>
-        <form style="" class="list">
+   <ion-content class="has-header" overflow-scroll="true" padding="true">
+      <h3 style="">Match Summary</h3>
+      <div ng-controller="CloudCtrl as cloud">
+         <form style="" class="list">
+            <div class="button-bar">
+               <label style="width: 50%;" name="matchNumber" class="item item-select">
+                  <span class="input-label">Match Number</span>
+                  <select ng-model="cloud.matchNum" ng-change="cloud.matchChanged()">
+                     <option ng-repeat="match in cloud.matches | orderBy: 'number'">{{match.number}}</option>
+                  </select>
+               </label>
+               <label style="width: 50%;" name="teamNumber" class="item item-select">
+                  <span class="input-label">Team Number</span>
+                  <select ng-model="cloud.teamNum" ng-change="cloud.teamChanged()">
+                     <option ng-repeat="team in cloud.teams | orderBy: 'number'">{{team.number}}</option>
+
+                  </select>
+               </label>
+            </div>
             <label style="" class="item item-input">
-                <span class="input-label">Text</span><textarea placeholder=""> </textarea>
+               <span class="input-label">Text</span><textarea placeholder="" ng-model="cloud.summary"> </textarea>
             </label>
-        </form>
-        <form style="" class="list">
+         </form>
+         <form style="" class="list">
             <label style="" name="numFouls" class="item item-input">
-                <span class="input-label">Fouls</span><textarea placeholder=""> </textarea>
+               <span class="input-label">Fouls</span><input type="number" ng-model="cloud.fouls" />
             </label>
-        </form>
-        <form style="" class="list">
+         </form>
+         <form style="" class="list">
             <label style="" name="foulInfo" class="item item-input">
-                <span class="input-label">Foul Details</span><textarea placeholder=""> </textarea>
+               <span class="input-label">Foul Details</span><textarea placeholder="" ng-model="cloud.foulDetails"> </textarea>
             </label>
-        </form>
-        <button style="" class="button button-positive button-block ">Upload Match</button>
-    </ion-content>
+         </form>
+         <button style="" class="button button-positive button-block" ng-click="cloud.publish()">Upload Match</button>
+
+      </div>
+   </ion-content>
 </ion-view>

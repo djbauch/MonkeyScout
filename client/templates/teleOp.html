@@ -5,13 +5,13 @@
             <div class="button-bar">
                <label style="width: 50%;" name="matchNumber" class="item item-select">
                   <span class="input-label">Match Number</span>
-                  <select ng-model="teleOp.matchNum">
+                  <select ng-model="teleOp.selectedMatch" ng-change="teleOp.matchChanged()">
                      <option ng-repeat="match in teleOp.matches | orderBy: 'number'">{{match.number}}</option>
                   </select>
                </label>
                <label style="width: 50%;" name="teamNumber" class="item item-select">
                   <span class="input-label">Team Number</span>
-                  <select ng-model="teleOp.teamNum">
+                  <select ng-model="teleOp.selectedTeam" ng-change="teleOp.teamChanged()">
                      <option ng-repeat="team in teleOp.teams | orderBy: 'number'">{{team.number}}</option>
 
                   </select>
@@ -73,8 +73,8 @@
          </div>
              -->
          <form style="" class="form-inline">
-            <ion-toggle style="" name="challengeTower" toggle-class="toggle-positive" ng-model="towerChallenged">Challenge Tower</ion-toggle>
-            <ion-toggle style="" name="scaleTower" toggle-class="toggle-positive" ng-model="towerScaled">Scale Tower</ion-toggle>
+            <ion-toggle style="" name="challengeTower" toggle-class="toggle-positive" ng-model="teleOp.towerChallenged">Challenge Tower</ion-toggle>
+            <ion-toggle style="" name="scaleTower" toggle-class="toggle-positive" ng-model="teleOp.towerScaled">Scale Tower</ion-toggle>
          </form>
          <button class="button button-assertive" ng-click="teleOp.resetScore()">Reset Score!</button>
          <button style="" class="button button-energized button-block " ng-click="teleOp.publish()">Publish</button>

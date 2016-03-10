@@ -5,13 +5,13 @@
             <div class="button-bar">
                <label style="width: 50%;" name="matchNumber" class="item item-select">
                   <span class="input-label">Match Number</span>
-                  <select ng-model="autonomous.matchNum">
+                  <select ng-model="autonomous.matchNum" ng-change="autonomous.matchChanged()">
                      <option ng-repeat="match in autonomous.matches | orderBy: 'number'">{{match.number}}</option>
                   </select>
                </label>
                <label style="width: 50%;" name="teamNumber" class="item item-select">
                   <span class="input-label">Team Number</span>
-                  <select ng-model="autonomous.teamNum">
+                  <select ng-model="autonomous.teamNum" ng-change="autonomous.teamChanged()">
                      <option ng-repeat="team in autonomous.teams | orderBy: 'number'">{{team.number}}</option>
 
                   </select>

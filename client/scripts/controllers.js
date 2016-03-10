@@ -92,6 +92,47 @@ angular.module('Scout.controllers', [])
     });
 
   }
+
+  this.teamChanged = function () {
+    debugger;
+    if (this.teamNum != null) {
+      let record = AutonomousScoutingInfo.findOne({ match: +this.matchNum, team: +this.teamNum });
+      if (record) {
+        this.startPos = record.startPos;
+        this.reachDefense = record.reachDefense;
+        this.crossDefense = record.crossDefense;
+        this.highGoal = record.highGoal;
+        this.lowGoal = record.lowGoal;
+      } else {
+        this.startPos = 'Unspecified';
+        this.reachDefense = false;
+        this.crossDefense = false;
+        this.highGoal = 0;
+        this.lowGoal = 0;
+      }
+    }
+  }
+
+  this.matchChanged = function () {
+    debugger;
+    if (this.matchNum != null) {
+      let record = AutonomousScoutingInfo.findOne({ match: +this.matchNum, team: +this.teamNum });
+      if (record) {
+        this.startPos = record.startPos;
+        this.reachDefense = record.reachDefense;
+        this.crossDefense = record.crossDefense;
+        this.highGoal = record.highGoal;
+        this.lowGoal = record.lowGoal;
+      } else {
+        this.startPos = 'Unspecified';
+        this.reachDefense = false;
+        this.crossDefense = false;
+        this.highGoal = 0;
+        this.lowGoal = 0;
+      }
+    }
+  }
+
   this.matchNum = 0;
   this.teamNum = 0;
   this.startPos = 'Unspecified';
@@ -101,8 +142,70 @@ angular.module('Scout.controllers', [])
   this.lowGoal = 0;
 })
 
-.controller('CloudCtrl', function ($scope) {
+.controller('CloudCtrl', function ($scope, $reactive) {
+  $reactive(this).attach($scope);
 
+  this.helpers({
+    matchScoutingInfo() {
+      return MatchScoutingInfo.find({ match: +this.matchNum });
+    },
+    matches() {
+      return Matches.find({});
+    },
+    teams() {
+      return Teams.find({});
+    }
+  });
+
+  this.publish = function () {
+    debugger;
+    let record = MatchScoutingInfo.findOne({ match: +this.matchNum, team: +this.teamNum });
+    if (record) {
+      MatchScoutingInfo.remove({ _id: record._id });
+    }
+    MatchScoutingInfo.insert({
+      match: +this.matchNum, team: +this.teamNum,
+      summary: this.summary,
+      fouls: this.fouls,
+      foulDetails: this.foulDetails
+    });
+  }
+
+  this.teamChanged = function () {
+    debugger;
+    if (this.teamNum != null) {
+      let record = MatchScoutingInfo.findOne({ match: +this.matchNum, team: +this.teamNum });
+      if (record) {
+        this.summary = record.summary;
+        this.fouls = record.fouls;
+        this.foulDetails = record.foulDetails;
+      } else {
+        this.summary = '';
+        this.fouls = 0;
+        this.foulDetails = '';
+      }
+    }
+  }
+
+  this.matchChanged = function () {
+    debugger;
+    let record = MatchScoutingInfo.findOne({ match: +this.matchNum, team: +this.teamNum });
+    if (record) {
+      this.summary = record.summary;
+      this.fouls = record.fouls;
+      this.foulDetails = record.foulDetails;
+    } else {
+      this.summary = '';
+      this.fouls = 0;
+      this.foulDetails = '';
+    }
+  }
+
+  this.matchNum = 0;
+  this.teamNum = 0;
+  this.summary = '';
+  this.fouls = 0;
+  this.foulDetails = '';
 })
 
 .controller('TeleOpCtrl', function ($scope, $reactive) {
@@ -163,9 +266,61 @@ angular.module('Scout.controllers', [])
     });
   }
 
-  this.selectionChanged = function () {
-
+  this.teamChanged = function () {
+    debugger;
+    if (this.selectedTeam != null) {
+      this.teamNum = this.selectedTeam;
+      let record = TeleOpScoutingInfo.findOne({ match: +this.matchNum, team: +this.selectedTeam });
+      if (record) {
+        this.breached = record.breached;
+        this.breachedDefense = record.breachedDefense;
+        this.crossedDefense = record.crossedDefense;
+        this.crossed = record.crossed;
+        this.numAttempts = record.numAttempts;
+        this.numScores = record.numScores;
+        this.towerChallenged = record.towerChallenged;
+        this.towerScaled = record.towerScaled;
+      } else {
+        this.breached = false;
+        this.breachedDefense = 'Unspecified';
+        this.crossedDefense = 'Unspecified';
+        this.crossed = false;
+        this.numAttempts = 0;
+        this.numScores = 0;
+        this.towerChallenged = false;
+        this.towerScaled = false;
+      }
+    }
   }
+
+  this.matchChanged = function () {
+    debugger;
+    this.matchNum = this.selectedMatch;
+    let record = TeleOpScoutingInfo.findOne({ match: +this.matchNum, team: +this.selectedTeam });
+    if (record) {
+      this.breached = record.breached;
+      this.breachedDefense = record.breachedDefense;
+      this.crossedDefense = record.crossedDefense;
+      this.crossed = record.crossed;
+      this.numAttempts = record.numAttempts;
+      this.numScores = record.numScores;
+      this.towerChallenged = record.towerChallenged;
+      this.towerScaled = record.towerScaled;
+    } else {
+      this.breached = false;
+      this.breachedDefense = 'Unspecified';
+      this.crossedDefense = 'Unspecified';
+      this.crossed = false;
+      this.numAttempts = 0;
+      this.numScores = 0;
+      this.towerChallenged = false;
+      this.towerScaled = false;
+    }
+  }
+
+
+  this.selectedTeam = {};
+  this.selectedMatch = {};
   this.matchNum = 0;
   this.teamNum = 0;
   this.startPos = 'Unspecified';
@@ -211,13 +366,13 @@ angular.module('Scout.controllers', [])
       intake: this.intake
     });
   }
-  
+
   this.teamChanged = function () {
     if (this.selectedTeam != null) {
       this.teamNum = this.selectedTeam.number;
-      let record = PitScoutingInfo.findOne({ team: +this.selectedTeam.number })
-      if (record ) {
-         this.wheels = record.wheels;
+      let record = PitScoutingInfo.findOne({ team: +this.selectedTeam.number });
+      if (record) {
+        this.wheels = record.wheels;
         this.wheelType = record.wheelType;
         this.code = record.code;
         this.scaling = record.scaling;
@@ -231,7 +386,7 @@ angular.module('Scout.controllers', [])
       }
     }
   }
-  
+
   this.teamNum = 0;
   this.selectedTeam = {};
   this.wheels = 0;
