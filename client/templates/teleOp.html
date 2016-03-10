@@ -1,63 +1,88 @@
 <ion-view style="" title="TeleOp">
-    <ion-content class="has-header" overflow-scroll="true" padding="true">
-        <form style="" class="list">
+   <ion-content class="has-header" overflow-scroll="true" padding="true">
+      <div ng-controller="TeleOpCtrl as teleOp">
+         <form style="" class="list">
             <div class="button-bar">
-                <label style="width: 70%;" name="crossingDefense" class="item item-select">
-                    <span class="input-label">Cross Defense</span>
-                    <select ng-model="teleOp.crossedDefense">
-                        <option>Portcullis</option>
-                        <option>Cheval De Frise</option>
-                        <option>Moat</option>
-                        <option>Ramparts</option>
-                        <option>Draw Bridge</option>
-                        <option>Sally Port</option>
-                        <option>Rock Wall</option>
-                        <option>Rough Terrain</option>
-                        <option>Low Bar</option>
-                    </select>
-                </label>
-                <ion-toggle ng-model="teleOp.crossed" style="width: 30%;" name="crossedDefense" toggle-class="toggle-positive">Crossed</ion-toggle>
+               <label style="width: 50%;" name="matchNumber" class="item item-select">
+                  <span class="input-label">Match Number</span>
+                  <select ng-model="teleOp.matchNum">
+                     <option ng-repeat="match in teleOp.matches | orderBy: 'number'">{{match.number}}</option>
+                  </select>
+               </label>
+               <label style="width: 50%;" name="teamNumber" class="item item-select">
+                  <span class="input-label">Team Number</span>
+                  <select ng-model="teleOp.teamNum">
+                     <option ng-repeat="team in teleOp.teams | orderBy: 'number'">{{team.number}}</option>
+
+                  </select>
+               </label>
+            </div>
+
+            <div class="button-bar">
+               <label style="width: 70%;" name="crossingDefense" class="item item-select">
+                  <span class="input-label">Cross Defense</span>
+                  <select ng-model="teleOp.crossedDefense">
+                     <option>Portcullis</option>
+                     <option>Cheval De Frise</option>
+                     <option>Moat</option>
+                     <option>Ramparts</option>
+                     <option>Draw Bridge</option>
+                     <option>Sally Port</option>
+                     <option>Rock Wall</option>
+                     <option>Rough Terrain</option>
+                     <option>Low Bar</option>
+                  </select>
+               </label>
+               <ion-toggle ng-model="teleOp.crossed" style="width: 30%;" name="crossedDefense" toggle-class="toggle-positive">Crossed</ion-toggle>
             </div>
             <div class="button-bar">
-                <label style="width: 70%;" name="breachDefense" class="item item-select">
-                    <span class="input-label">Breach Defense</span>
-                    <select ng-model="teleOp.breachedDefense">
-                        <option>Portcullis</option>
-                        <optison>Cheval de Frise</optison>
-                        <option>Moat</option>
-                        <option>Ramparts</option>
-                        <option>Draw Bridge</option>
-                        <option>Sally Port</option>
-                        <option>Rock Wall</option>
-                        <option>Rough Terrain</option>
-                        <option>Low Bar</option>
-                    </select>
-                </label>
-                <ion-toggle ng-model="teleOp.breached" style="width: 30%;" name="breachedDefense" toggle-class="toggle-positive">Breached</ion-toggle>
+               <label style="width: 70%;" name="breachDefense" class="item item-select">
+                  <span class="input-label">Breach Defense</span>
+                  <select ng-model="teleOp.breachedDefense">
+                     <option>Portcullis</option>
+                     <optison>Cheval de Frise</optison>
+                     <option>Moat</option>
+                     <option>Ramparts</option>
+                     <option>Draw Bridge</option>
+                     <option>Sally Port</option>
+                     <option>Rock Wall</option>
+                     <option>Rough Terrain</option>
+                     <option>Low Bar</option>
+                  </select>
+               </label>
+               <ion-toggle ng-model="teleOp.breached" style="width: 30%;" name="breachedDefense" toggle-class="toggle-positive">Breached</ion-toggle>
             </div>
-        </form>
-        <div class="button-bar">
-            <button style="width: 10%;" class="button  button-balanced"><i class="glyphicon glyphicon-plus"></i></button>
-            <button style="width: 10%;" class="button  button-assertive"><i class="glyphicon glyphicon-minus"></i></button>
-            <button style="width: 40%;" class="button button-energized " ng-click="teleOp.attempt()">Attempt
-            <span class="badge" style="transform: translateX(1em);">{{teleOp.numAttempts}}</span>
+         </form>
+         <div class="button-bar">
+            <button style="width: 10%;" class="button {{teleOp.color}}" ng-click="teleOp.toggleButton()"><i class="glyphicon {{teleOp.symbol}}"></i></button>
+            <button style="width: 40%;" class="button button-energized " ng-click="teleOp.attempt()">
+               Attempt
+               <span class="badge" style="transform: translateX(1em);">{{teleOp.numAttempts}}</span>
             </button>
-            <button style="width: 40%;" class="button button-royal " ng-click="teleOp.score()">Score
-            <span class="badge" style="transform: translateX(1em);">{{teleOp.numScores}}</span>
+            <button style="width: 40%;" class="button button-royal " ng-click="teleOp.score()">
+               Score
+               <span class="badge" style="transform: translateX(1em);">{{teleOp.numScores}}</span>
             </button>
-        </div>
-        <!--
-        <div style="" class="button-bar">
-            <button style="width: 10%;" class="button button-block button-balanced"><i class="glyphicon glyphicon-plus"></i></button>
-            <button style="width: 10%;" class="button button-block button-assertive"><i class="glyphicon glyphicon-minus"></i></button>
-            <button style="width: 40%;" class="button button-energized button-block ">Attempt</button>
-            <button style="width: 40%;" class="button button-royal button-block ">Score</button>
-        </div>
-            -->
-        <form style="" class="form-inline">
-            <ion-toggle style="" name="challengeTower" toggle-class="toggle-positive">Challenge Tower</ion-toggle>
-            <ion-toggle style="" name="scaleTower" toggle-class="toggle-positive">Scale Tower</ion-toggle>
-        </form>
-        <button class="button button-assertive" ng-click="teleOp.resetScore()">Reset Score!</button>
-    </ion-content>
+         </div>
+         <!--
+         <div style="" class="button-bar">
+             <button style="width: 10%;" class="button button-block button-balanced"><i class="glyphicon glyphicon-plus"></i></button>
+             <button style="width: 10%;" class="button button-block button-assertive"><i class="glyphicon glyphicon-minus"></i></button>
+             <button style="width: 40%;" class="button button-energized button-block ">Attempt</button>
+             <button style="width: 40%;" class="button button-royal button-block ">Score</button>
+         </div>
+             -->
+         <form style="" class="form-inline">
+            <ion-toggle style="" name="challengeTower" toggle-class="toggle-positive" ng-model="towerChallenged">Challenge Tower</ion-toggle>
+            <ion-toggle style="" name="scaleTower" toggle-class="toggle-positive" ng-model="towerScaled">Scale Tower</ion-toggle>
+         </form>
+         <button class="button button-assertive" ng-click="teleOp.resetScore()">Reset Score!</button>
+         <button style="" class="button button-energized button-block " ng-click="teleOp.publish()">Publish</button>
+      </div>
+      <p>Select a Match Number and a Team Number</p>
+      <p>Use pull-downs to select defense types and the Crossed/Breached toggles to record success</p>
+      <p>Tap the PLUS button to make it a SUBTRACT button and tap Attempt or Score buttons to Add or Subtract a point</p>
+      <p>Use the toggles to record challenging and scaling the tower</p>
+      <p>Press the PUBLISH button at the end of the match</p>
+   </ion-content>
 </ion-view>

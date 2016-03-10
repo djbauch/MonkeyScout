@@ -112,6 +112,6 @@ angular.module('Scout.routes', [])
     controller: 'SignupCtrl'
   });
 
-  $urlRouterProvider.otherwise('/tabs/setup');
+  $urlRouterProvider.otherwise('/tabs/configure');
 
 });

@@ -4,32 +4,44 @@
          <form style="" class="list">
             <label style="" name="pitTeam" class="item item-select">
                <span class="input-label">Team</span>
-               <select ng-model="pitScouting.selectedTeam"
+               <select ng-model="pitScouting.selectedTeam" ng-change="pitScouting.teamChanged()"
                        ng-options="x.number for x in pitScouting.teams"></select>
             </label>
             <label style="" class="item item-select">
                <span class="input-label">Wheels</span>
-               <select></select>
+
+               <select ng-model="pitScouting.wheels">
+                  <option>4</option>
+                  <option>6</option>
+                  <option>8</option>
+               </select>
             </label>
             <label style="" class="item item-select">
                <span class="input-label">Wheel Type</span>
-               <select></select>
+               <select ng-model="pitScouting.wheelType">
+                  <option>pneumatic</option>
+                  <option>solid</option>
+                  <option>tread</option>
+                  <option>mecanum</option>
+               </select>
             </label>
             <label style="" class="item item-select">
                <span class="input-label">Code</span>
                <select>
                   <option>Java</option>
-                  <option>C++</option>
+                  <option>C + +</option>
                   <option>LabView</option>
                </select>
             </label>
             <label style="" class="item item-input">
-               <span class="input-label">Scaling Mechanism</span><textarea placeholder=""> </textarea>
+               <span class="input-label">Scaling Mechanism</span><textarea placeholder="" ng-model="pitScouting.scaling"> </textarea>
             </label>
             <label style="" class="item item-input">
-               <span class="input-label">Intake Mechanism</span><textarea placeholder=""> </textarea>
+               <span class="input-label">Intake Mechanism</span><textarea placeholder="" ng-model="pitScouting.intake"> </textarea>
             </label>
          </form>
+         <button style="" class="button button-energized button-block " ng-click="pitScouting.publish()">Publish</button>
+
       </div>
    </ion-content>
 </ion-view>
