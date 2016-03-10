@@ -2,115 +2,119 @@ angular.module('Scout.routes', [])
 
 .config(function ($stateProvider, $urlRouterProvider) {
 
-    // Ionic uses AngularUI Router which uses the concept of states
-    // Learn more here: https://github.com/angular-ui/ui-router
-    // Set up the various states which the app can be in.
-    // Each state's controller can be found in controllers.js
+  // Ionic uses AngularUI Router which uses the concept of states
+  // Learn more here: https://github.com/angular-ui/ui-router
+  // Set up the various states which the app can be in.
+  // Each state's controller can be found in controllers.js
 
 
-    $stateProvider
+  $stateProvider
 
   .state('tabs', {
-      url: '/tabs',
-      templateUrl: 'client/templates/tabs.html',
-      abstract: true
+    url: '/tabs',
+    templateUrl: 'client/templates/tabs.html',
+    abstract: true
+  })
+
+  // Configure the event info. List of teams and matches.
+  .state('tabs.configure', {
+    url: '/configure',
+    views: {
+      'tab-configure': {
+        templateUrl: 'client/templates/configuration.html',
+        controller: 'configurationCtrl as configuration'
+      }
+    }
+  })
+
+  // Setup info for a match (i.e. one three-on-three robot competition)
+  .state('tabs.setup', {
+    url: '/setup',
+    views: {
+      'tab-setup': {
+        templateUrl: 'client/templates/setup.html',
+        controller: 'setupCtrl as setup'
+      }
+    }
   })
 
   .state('tabs.autonomous', {
-      url: '/autonomous',
-      views: {
-          'tab-autonomous': {
-              templateUrl: 'client/templates/autonomous.html',
-              controller: 'autonomousCtrl'
-          }
+    url: '/autonomous',
+    views: {
+      'tab-autonomous': {
+        templateUrl: 'client/templates/autonomous.html',
+        controller: 'autonomousCtrl'
       }
+    }
   })
 
   .state('tabs.chats', {
-      url: '/chats',
-      templateUrl: 'client/templates/chats.html'
+    url: '/chats',
+    templateUrl: 'client/templates/chats.html'
   })
 
-  .state('tabs.setup', {
-      url: '/setup',
-      views: {
-          'tab-setup': {
-              templateUrl: 'client/templates/setup.html',
-              controller: 'setupCtrl as setup'
-          }
-      }
-  })
+
 
 
   .state('tabs.cloud', {
-      url: '/cloud',
-      views: {
-          'tab-cloud': {
-              templateUrl: 'client/templates/cloud.html',
-              controller: 'cloudCtrl'
-          }
+    url: '/cloud',
+    views: {
+      'tab-cloud': {
+        templateUrl: 'client/templates/cloud.html',
+        controller: 'cloudCtrl'
       }
+    }
   })
 
 
   .state('tabs.teleop', {
-      url: '/teleop',
-      views: {
-          'tab-teleop': {
-              templateUrl: 'client/templates/teleOp.html',
-              controller: 'teleOpCtrl as teleOp'
-          }
+    url: '/teleop',
+    views: {
+      'tab-teleop': {
+        templateUrl: 'client/templates/teleOp.html',
+        controller: 'teleOpCtrl as teleOp'
       }
+    }
   })
 
   .state('tabs.match', {
-      url: '/match',
-      views: {
-          'tab-match': {
-              templateUrl: 'client/templates/match.html',
-              controller: 'matchCtrl'
-          }
+    url: '/match',
+    views: {
+      'tab-match': {
+        templateUrl: 'client/templates/match.html',
+        controller: 'matchCtrl'
       }
+    }
   })
 
   .state('tabs.pit', {
-      url: '/pit',
-      views: {
-          'tab-pit': {
-              templateUrl: 'client/templates/pitScouting.html',
-              controller: 'pitScoutingCtrl as pitScouting'
-          }
+    url: '/pit',
+    views: {
+      'tab-pit': {
+        templateUrl: 'client/templates/pitScouting.html',
+        controller: 'pitScoutingCtrl as pitScouting'
       }
+    }
   })
 
   .state('tab7DefaultPage', {
-      url: '/page8',
-      templateUrl: 'client/templates/tab7DefaultPage.html',
-      controller: 'tab7DefaultPageCtrl'
-  })
-
-  .state('tabs.configure', {
-      url: '/configure',
-      views: {
-          'tab-configure': {
-              templateUrl: 'client/templates/configuration.html',
-              controller: 'configurationCtrl as configuration'
-          }
-      }
+    url: '/page8',
+    templateUrl: 'client/templates/tab7DefaultPage.html',
+    controller: 'tab7DefaultPageCtrl'
   })
 
   .state('login', {
-      url: '/page10',
-      templateUrl: 'client/templates/login.html',
-      controller: 'loginCtrl'
+    url: '/page10',
+    templateUrl: 'client/templates/login.html',
+    controller: 'loginCtrl'
   })
 
   .state('signup', {
-      url: '/page11',
-      templateUrl: 'client/templates/signup.html',
-      controller: 'signupCtrl'
+    url: '/page11',
+    templateUrl: 'client/templates/signup.html',
+    controller: 'signupCtrl'
   });
 
-    $urlRouterProvider.otherwise('/tabs/setup');
+  $urlRouterProvider.otherwise('/tabs/setup');
 
 });

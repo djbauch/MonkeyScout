@@ -1,18 +1,38 @@
 <ion-view view-title="Configuration" id="configuration-view">
     <ion-content class="has-header" overflow-scroll="true" padding="true">
-        <form class="list">
-            <div class="list">
+        <div ng-controller="ConfigurationCtrl as configuration">
+            <form class="form-inline" role="form">
+                <span>
+                    <label>Team #</label>
+                    <input type="text" ng-model="configuration.teamNumber" />
+                </span>
+                <span><label>Team Name</label><input type="text" ng-model="configuration.teamName" /></span>
+                <button style="" class="button button-energized button-block " ng-click="configuration.addTeam">Add</button>
 
-                <label class="item item-input item-select">
-                    <span class="input-label">
-                        Teams
-                    </span>
-
-                    <!-- ng-model="configuration.selectedTeam" -->
-                    <select ng-options="x.number for x in configuration.teams"></select>
+                <label style="" class="item item-select">
+                    <span class="input-label">Team</span>
+                    <select>
+                        <option ng-repeat="team in configuration.teams | orderBy: 'number'">{{team.number + ' ' + team.name}}</option>
+                    </select>
                 </label>
+            </form>
 
-            </div>
-        </form>
+            <p>This thing is {{configuration.thing}}</p>
+            <p>No qualifier: {{thing }}</p>
+            <form class="list">
+                <div class="list">
+
+                    <label class="item item-input item-select">
+                        <span class="input-label">
+                            Teams
+                        </span>
+
+                        <!-- ng-model="configuration.selectedTeam" -->
+                        <select ng-options="x.number for x in configuration.teams"></select>
+                    </label>
+
+                </div>
+            </form>
+        </div>
     </ion-content>
 </ion-view>
