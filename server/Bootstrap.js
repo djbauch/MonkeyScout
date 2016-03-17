@@ -1,7 +1,7 @@
 // Server Bootstrap JavaScript
 Meteor.startup(function () {
   if (Teams.find().count() === 0) {
-    Teams.remove({});
+    //Teams.remove({});
 
     let teams = [
       {
@@ -20,7 +20,7 @@ Meteor.startup(function () {
       },
       {
         number: 2468,
-        name: 'Appreciate',
+        name: 'Team Appreciate',
         // timestamp: moment().subtract(4, 'days').toDate()
       }
     ];
