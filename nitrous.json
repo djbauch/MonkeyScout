@@ -1,0 +1,5 @@
+{
+  "template": "meteor",
+  "name": "MonkeyScout development template",
+  "description": "A scouting application for FRC 2016 competitions. Meant for iPad, phone, Kindle, etc."
+}
